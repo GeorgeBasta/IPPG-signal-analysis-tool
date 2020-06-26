@@ -1,0 +1,15 @@
+function [y] = spdetrend(x,lambda)
+%SPDETREND Detrends a signal with the smoothness priors approach implemented 
+% based on M. P. Tarvainen, TBME, 2002
+%
+%   Inputs:
+%       x= Signal to detrend.
+%       lambda= lambda value to use for detrending.
+%
+%   Outputs:
+%       y= The detrended signal.
+
+T = len(signal)
+lam = 10;
+I  = np.identity(T)
+D2 = scipy.sparse.spdiags(np.ones((T-2,1),dtype=np.int)*[1,-2,1],(range(0,3)),T-2,T);
