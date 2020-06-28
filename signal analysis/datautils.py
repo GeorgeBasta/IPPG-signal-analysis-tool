@@ -270,14 +270,6 @@ def rolling_mean(data, windowsize, sample_rate):
     out : 1-d numpy array
         sequence containing computed rolling mean
 
-    Examples
-    --------
-    >>> data, _ = load_exampledata(example = 1)
-    >>> rmean = rolling_mean(data, windowsize=0.75, sample_rate=100)
-    >>> rmean[100:110]
-    array([514.49333333, 514.49333333, 514.49333333, 514.46666667,
-           514.45333333, 514.45333333, 514.45333333, 514.45333333,
-           514.48      , 514.52      ])
     '''
     avg_hr = (np.mean(data))
     data_arr = np.array(data)
@@ -286,7 +278,7 @@ def rolling_mean(data, windowsize, sample_rate):
     rol_mean = np.insert(rol_mean, 0, missing_vals)
     rol_mean = np.append(rol_mean, missing_vals)
 
-    #only to catch length errors that sometimes unexplicably occur. 
+    #only to catch length errors that sometimes unexpectedly occur
     ##Generally not executed, excluded from testing and coverage
     if len(rol_mean) != len(data): # pragma: no cover
         lendiff = len(rol_mean) - len(data)
